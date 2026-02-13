@@ -1,0 +1,24 @@
+
+----canopen simulation-----
+//find current heart beat 
+cansend vcan0 601#4017100000000000
+
+//change heartbeat to 200ms 
+cansend vcan0 601#2B171000C8000000
+
+//recieve speed 
+cansend vcan0 201#F401
+cansend vcan0 201#6400
+
+-------******-----------
+
+---------gateway simulation------
+
+//send lowspeed data 
+cangen vcan1 -g 100 -I 456 -D FFAABBCC
+
+//send high speed data to low speed can
+cangen vcan0 -g 5 -I 123 -D 11223344
+
+
+
